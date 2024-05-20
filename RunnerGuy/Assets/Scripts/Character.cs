@@ -13,14 +13,14 @@ public class Character : MonoBehaviour
         transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World);
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            if (this.gameObject.transform.position.x > Boundaries.left)
+            if (this.gameObject.transform.position.z > Boundaries.left)
             {
                 transform.Translate(Vector3.left * Time.deltaTime * leftRight);
             }
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            if (this.gameObject.transform.position.x < Boundaries.right)
+            if (this.gameObject.transform.position.z < Boundaries.right)
             {
                 transform.Translate(Vector3.left * Time.deltaTime * leftRight * -1);
             }
