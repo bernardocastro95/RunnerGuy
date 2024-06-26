@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,18 +9,25 @@ public class UiManager : MonoBehaviour
 {
     public Text chronometer, score;
     private float currentTime;
+    private int currentScore;
     private bool timerActive;
+    [SerializeField]
+    private Character character;
     // Start is called before the first frame update
     void Start()
     {
         currentTime = 0f;
         startTime();
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         chronometerTimer();
+        scoreManager();
     }
     void chronometerTimer()
     {
@@ -31,7 +39,6 @@ public class UiManager : MonoBehaviour
 
         }
     }
-
     void startTime()
     {
         timerActive = true;
@@ -39,5 +46,14 @@ public class UiManager : MonoBehaviour
     void stopTimer()
     {
         timerActive = false;
+    }
+    void scoreManager()
+    {
+        for (int i = 0; i <= character.transform.position.x; i++)
+        {
+            currentScore =+ 1;
+            score.text = currentScore.ToString();
+        }
+        
     }
 }

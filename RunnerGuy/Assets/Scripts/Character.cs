@@ -6,10 +6,12 @@ public class Character : MonoBehaviour
 {
     float speed = 3f;
     float leftRight = 4f;
+    public float xPosition;
 
     // Update is called once per frame
     void Update()
     {
+
         transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World);
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {

@@ -4780,6 +4780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b684d776548df1f4f8b0ac234e5c085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xPosition: 0
 --- !u!1 &1149258658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a4f017fc7421c64cafd413325a7ba2d, type: 3}
@@ -6231,6 +6232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chronometer: {fileID: 305723756}
   score: {fileID: 881161907}
+  character: {fileID: 1140844906}
 --- !u!1 &1356012188
 GameObject:
   m_ObjectHideFlags: 0
