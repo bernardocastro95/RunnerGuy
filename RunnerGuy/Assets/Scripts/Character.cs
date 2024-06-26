@@ -6,7 +6,6 @@ public class Character : MonoBehaviour
 {
     float speed = 3f;
     float leftRight = 4f;
-    public float xPosition;
 
     // Update is called once per frame
     void Update()

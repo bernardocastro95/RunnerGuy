@@ -11,8 +11,10 @@ public class UiManager : MonoBehaviour
     private float currentTime;
     private int currentScore;
     private bool timerActive;
+    private float distanceRunned;
     [SerializeField]
     private Character character;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +51,9 @@ public class UiManager : MonoBehaviour
     }
     void scoreManager()
     {
-        for (int i = 0; i <= character.transform.position.x; i++)
-        {
-            currentScore =+ 1;
-            score.text = currentScore.ToString();
-        }
+        distanceRunned = character.transform.position.x * -1;
+        currentScore = (int)distanceRunned * 10;
+        score.text = currentScore.ToString();
         
     }
 }
