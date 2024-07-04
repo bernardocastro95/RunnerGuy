@@ -6,6 +6,8 @@ public class Character : MonoBehaviour
 {
     float speed = 3f;
     float leftRight = 4f;
+    Animator anim;
+    public bool hit = false;
 
     // Update is called once per frame
     void Update()
@@ -27,5 +29,13 @@ public class Character : MonoBehaviour
             }
         }
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "obstacle")
+        {
+            hit = true;
+            anim.SetBool("hit", hit);
+        }
     }
 }
