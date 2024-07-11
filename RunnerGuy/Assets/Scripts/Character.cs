@@ -31,16 +31,7 @@ public class Character : MonoBehaviour
                 }
             }
         }
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("obstacle"))
-            {
-                hit = true;
-                speed = 0;
-                anim.Play("Stumble");
-            }
-
-        }
+        
 
     }
 

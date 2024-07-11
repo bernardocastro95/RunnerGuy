@@ -13,14 +13,13 @@ public class UiManager : MonoBehaviour
     private bool timerActive;
     private float distanceRunned;
     [SerializeField]
-    private Character character;
+    public Character character;
 
     // Start is called before the first frame update
     void Start()
     {
         currentTime = 0f;
         startTime();
-        distanceRunned = distanceRunned * 0;
         
     }
 
@@ -30,6 +29,10 @@ public class UiManager : MonoBehaviour
         
         chronometerTimer();
         scoreManager();
+        if(character.hit == true)
+        {
+            stopTimer();
+        }
     }
     void chronometerTimer()
     {
