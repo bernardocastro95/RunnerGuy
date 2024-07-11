@@ -20,7 +20,7 @@ public class UiManager : MonoBehaviour
     {
         currentTime = 0f;
         startTime();
-        
+        distanceRunned = distanceRunned * 0;
         
     }
 

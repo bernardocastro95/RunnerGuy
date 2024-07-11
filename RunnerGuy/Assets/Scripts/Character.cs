@@ -4,38 +4,45 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    float speed = 3f;
+    public float speed = 3f;
     float leftRight = 4f;
-    Animator anim;
-    public bool hit = false;
+    public Animator anim;
+    public bool hit;
 
     // Update is called once per frame
     void Update()
     {
 
         transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World);
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (hit == false)
         {
-            if (this.gameObject.transform.position.z > Boundaries.left)
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRight);
+                if (this.gameObject.transform.position.z > Boundaries.left)
+                {
+                    transform.Translate(Vector3.left * Time.deltaTime * leftRight);
+                }
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                if (this.gameObject.transform.position.z < Boundaries.right)
+                {
+                    transform.Translate(Vector3.left * Time.deltaTime * leftRight * -1);
+                }
             }
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        void OnTriggerEnter(Collider other)
         {
-            if (this.gameObject.transform.position.z < Boundaries.right)
+            if (other.gameObject.CompareTag("obstacle"))
             {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRight * -1);
+                hit = true;
+                speed = 0;
+                anim.Play("Stumble");
             }
+
         }
 
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "obstacle")
-        {
-            hit = true;
-            anim.SetBool("hit", hit);
-        }
-    }
+
+
 }
