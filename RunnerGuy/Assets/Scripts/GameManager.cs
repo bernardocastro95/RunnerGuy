@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         if(character.hit == true)
         {
             ui.highScoreSetter();
+            ui.timeScoreSetter();
         }
     }
 }

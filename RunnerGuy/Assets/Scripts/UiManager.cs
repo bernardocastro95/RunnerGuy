@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UiManager : MonoBehaviour
 {
-    public Text chronometer, score, scoreRecord;
+    public Text chronometer, score, scoreRecord, timeRecord;
     private float currentTime;
-    private int currentScore, highScore;
+    private int currentScore;
     private bool timerActive;
     private float distanceRunned;
     [SerializeField]
@@ -72,5 +73,21 @@ public class UiManager : MonoBehaviour
             PlayerPrefs.SetInt("highscore", currentScore);
         }
         scoreRecord.text = PlayerPrefs.GetInt("highscore").ToString();
+    }
+
+    public void timeScoreSetter()
+    {
+        if (PlayerPrefs.HasKey("timeScore"))
+        {
+            if(currentTime > PlayerPrefs.GetFloat("timeScore"))
+            {
+                PlayerPrefs.SetFloat("timeScore", currentTime);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("timeScore", currentTime);
+        }
+        timeRecord.text = PlayerPrefs.GetFloat("timeScore").ToString();
     }
 }
