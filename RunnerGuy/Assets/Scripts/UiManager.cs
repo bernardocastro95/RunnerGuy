@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    public Text chronometer, score;
+    public Text chronometer, score, scoreRecord;
     private float currentTime;
-    private int currentScore;
+    private int currentScore, highScore;
     private bool timerActive;
     private float distanceRunned;
     [SerializeField]
@@ -57,6 +57,20 @@ public class UiManager : MonoBehaviour
         distanceRunned = character.transform.position.x * -1;
         currentScore = (int)distanceRunned * 10;
         score.text = currentScore.ToString();
-        
+    }
+    public void highScoreSetter()
+    {
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            if (currentScore > PlayerPrefs.GetInt("highscore"))
+            {
+                PlayerPrefs.SetInt("highscore", currentScore);           
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("highscore", currentScore);
+        }
+        scoreRecord.text = PlayerPrefs.GetInt("highscore").ToString();
     }
 }
