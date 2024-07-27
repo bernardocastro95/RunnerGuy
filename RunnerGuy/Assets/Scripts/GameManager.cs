@@ -11,9 +11,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(character.hit == true)
-        {
+        { 
             ui.highScoreSetter();
             ui.timeScoreSetter();
+            ui.gameOverText();
+            intervalGameStop();
+            ui.revealBUtton();
         }
+    }
+    
+    IEnumerator intervalGameStop()
+    {
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 0;
     }
 }

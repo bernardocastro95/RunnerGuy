@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class UiManager : MonoBehaviour
     private float distanceRunned;
     [SerializeField]
     public Character character;
+    public Text gameover;
+    public Button restart;
 
     // Start is called before the first frame update
     void Start()
     {
         currentTime = 0f;
+        currentScore = 0;
         startTime();
+        restart.onClick.AddListener(restartGame);
         
     }
 
@@ -82,12 +87,37 @@ public class UiManager : MonoBehaviour
             if(currentTime > PlayerPrefs.GetFloat("timeScore"))
             {
                 PlayerPrefs.SetFloat("timeScore", currentTime);
+                
+
             }
         }
         else
         {
             PlayerPrefs.SetFloat("timeScore", currentTime);
         }
+        TimeSpan time = TimeSpan.FromSeconds(currentTime);
         timeRecord.text = PlayerPrefs.GetFloat("timeScore").ToString();
+        timeRecord.text = time.Minutes.ToString() + ":" + time.Seconds.ToString();
+    }
+
+    public void gameOverText()
+    {
+        gameover.text = "GAME OVER";
+    }
+
+    public void revealBUtton()
+    {
+        restart.gameObject.SetActive(true);
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(0);
+        gameover.text = "";
+        restart.gameObject.SetActive(false);
+        timeRecord.text = PlayerPrefs.GetFloat("timeScore").ToString();
+        scoreRecord.text = PlayerPrefs.GetInt("highscore").ToString();
+
+
     }
 }

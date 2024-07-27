@@ -8,15 +8,16 @@ public class RandomizeLevel : MonoBehaviour
     public int xPos = 50;
     public bool createSection = false;
     public int secNum;
+    public Character character;
 
     // Update is called once per frame
     void Update()
     {
-       if(createSection == false)
+       if(createSection == false && character.hit == false)
         {
             createSection = true;
             StartCoroutine(generateSection());
-        } 
+        }
     }
 
     IEnumerator generateSection()
@@ -26,5 +27,10 @@ public class RandomizeLevel : MonoBehaviour
         xPos -= 50;
         yield return new WaitForSeconds(2);
         createSection = false;
+
+        if(character.hit == true)
+        {
+            yield return null;
+        }
     }
 }
