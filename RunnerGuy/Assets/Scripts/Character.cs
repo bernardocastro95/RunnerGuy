@@ -8,12 +8,17 @@ public class Character : MonoBehaviour
     float leftRight = 4f;
     public Animator anim;
     public bool hit;
+    public float distanceAchievedMilestone;
+    private float milestoneCount;
+    private float increaseSpeed;
+    public float multiplier;
+
 
     // Update is called once per frame
     void Update()
     {
-
         transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World);
+        speedUp();
         if (hit == false)
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -35,5 +40,16 @@ public class Character : MonoBehaviour
 
     }
 
+    void speedUp()
+    {
+        if(transform.position.x < distanceAchievedMilestone)
+        {
+            milestoneCount += distanceAchievedMilestone;
+            distanceAchievedMilestone = distanceAchievedMilestone * multiplier;
+            speed *= multiplier;
+        }
+
+        
+    }
 
 }

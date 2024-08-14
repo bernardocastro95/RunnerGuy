@@ -1258,6 +1258,7 @@ MonoBehaviour:
   xPos: 50
   createSection: 0
   secNum: 0
+  character: {fileID: 1140844906}
 --- !u!1001 &191186392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4338,7 +4339,7 @@ GameObject:
   - component: {fileID: 897272306}
   - component: {fileID: 897272305}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5438,6 +5439,8 @@ MonoBehaviour:
   speed: 3
   anim: {fileID: 1140844907}
   hit: 0
+  distanceAchievedMilestone: -50
+  multiplier: 1.25
 --- !u!95 &1140844907
 Animator:
   serializedVersion: 3
@@ -7017,6 +7020,8 @@ MonoBehaviour:
   scoreRecord: {fileID: 680981695}
   timeRecord: {fileID: 1709867271}
   character: {fileID: 1140844906}
+  gameover: {fileID: 581360064}
+  restart: {fileID: 897272305}
 --- !u!1 &1356012188
 GameObject:
   m_ObjectHideFlags: 0
