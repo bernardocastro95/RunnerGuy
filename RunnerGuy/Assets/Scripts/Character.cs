@@ -12,6 +12,8 @@ public class Character : MonoBehaviour
     private float milestoneCount;
     private float increaseSpeed;
     public float multiplier;
+    public bool jumping, landing = false;
+    public GameObject player;
 
 
     // Update is called once per frame
@@ -50,6 +52,23 @@ public class Character : MonoBehaviour
         }
 
         
+    }
+
+    void jump()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            if(jumping == false)
+            {
+                jumping = true;
+                player.GetComponent<Animator>().Play("Jump");
+            }
+            
+        }
+        else
+        {
+            
+        }
     }
 
 }

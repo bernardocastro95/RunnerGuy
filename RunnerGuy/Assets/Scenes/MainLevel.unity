@@ -5441,6 +5441,9 @@ MonoBehaviour:
   hit: 0
   distanceAchievedMilestone: -50
   multiplier: 1.25
+  jumping: 0
+  landing: 0
+  player: {fileID: 1149258658}
 --- !u!95 &1140844907
 Animator:
   serializedVersion: 3
