@@ -21,6 +21,8 @@ public class Character : MonoBehaviour
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World);
         speedUp();
+        jump();
+        
         if (hit == false)
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -62,13 +64,32 @@ public class Character : MonoBehaviour
             {
                 jumping = true;
                 player.GetComponent<Animator>().Play("Jump");
+                StartCoroutine(JumpSequence());
             }
             
         }
-        else
+        if(jumping == true)
         {
-            
+            if(landing == false)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * 3, Space.World);
+            }
+            if(landing == true)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
+            }
         }
+        
+    }
+
+    IEnumerator JumpSequence()
+    {
+        yield return new WaitForSeconds(0.45f);
+        landing = true;
+        yield return new WaitForSeconds(0.45f);
+        jumping = false;
+        landing = false;
+        player.GetComponent<Animator>().Play("Standard Run");
     }
 
 }
